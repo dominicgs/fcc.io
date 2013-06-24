@@ -13,15 +13,13 @@ enough to remember.
 How?
 ----
 The URL scheme is simple:
- * https://fcc.io/"applicant id"/"product id"
+ - https://fcc.io/"applicant id"/"product id"
 
 Try these:
- * https://fcc.io/NPI
- * https://fcc.io/NPI/71646
+ - https://fcc.io/NPI
+ - https://fcc.io/NPI/71646
+ - https://fcc.io/grantee/lego
 
 ToDo
 ----
-22:23 mossmann: Next you should do https://fcc.io/grantee/lego
-
-22:23 mossmann: based on https://apps.fcc.gov/oetcf/eas/reports/GranteeSearch.cfm
-
+Other searches?

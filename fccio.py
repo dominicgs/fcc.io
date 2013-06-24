@@ -5,6 +5,12 @@ from bottle import route, template, default_app
 def index():
 	return template('index')
 
+@route('/grantee/<name>')
+def search(name=None):
+	if name is None:
+		return index()
+	return template('grantee', name=name)
+
 @route('/<appid>')
 @route('/<appid>/<productid>')
 def search(appid=None, productid=None):

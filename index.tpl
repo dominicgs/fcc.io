@@ -13,18 +13,18 @@
 enough to remember.</p>
 
 <h2>How?</h2>
+<p>The URL scheme is simple:</p>
+<ul><li>https://fcc.io/"applicant id"/"product id"</li></ul>
 
-<p>The URL scheme is simple:
- * https://fcc.io/"applicant id"/"product id"</p>
-
-<p>Try these:
- * https://fcc.io/NPI
- * https://fcc.io/NPI/71646</p>
+<p>Try these:</p>
+<ul>
+<li>https://fcc.io/NPI</li>
+<li>https://fcc.io/NPI/71646</li>
+<li>https://fcc.io/grantee/lego</li>
+</ul>
 
 <h2>ToDo</h2>
-
-<p>22:23 mossmann: Next you should do https://fcc.io/grantee/lego</p>
-
-<p>22:23 mossmann: based on https://apps.fcc.gov/oetcf/eas/reports/GranteeSearch.cfm</p>
+<p>Other search suggestions?</p>
+Email to <a href="mailto:dominicgs@gmail.com">https://fcc.io/grantee/lego</a>
 </body>
 </html>
