@@ -1,0 +1,47 @@
+<html><head>
+<title>FCC ID Search and Redirection</title>
+<script type="text/javascript" >
+function submitForm()
+{
+  var url = "https://fcc.io/" + document.forms["search"]["fccid"].value;
+  //window.location.href = url;
+  location.replace(url);
+  console.log(url);
+  return false;
+}
+</script>
+</head><body>
+<h1>FCC.io</h1>
+
+<h2>What?</h2>
+<p>A simple search and URL shortener for FCC ID queries.</p>
+<form name="search" action="javascript" onsubmit="return submitForm()">
+Try it here:<br>
+FCC ID:<input type="text" name="fccid">
+<input type="button" value="Search" onclick="submitForm()">
+</form>
+
+<h2>Why?</h2>
+<p>I can never find the search form on the FCC site, so fcc.io should be easy
+enough to remember. Fcc.io provides a way to share FCC ID searchs with other
+people via links, email, IRC or IM.</p>
+
+<h2>How?</h2>
+<p>The URL scheme is simple:</p>
+<ul><li>https://fcc.io/"FCC ID"</li></ul>
+
+<p>Try these:</p>
+<ul>
+<li>https://fcc.io/NPI</li>
+<li>https://fcc.io/NPI71646</li>
+<li>https://fcc.io/grantee/lego</li>
+</ul>
+
+<h2>ToDo</h2>
+<p>Other search suggestions?</p>
+Email to <a href="mailto:dominicgs@gmail.com">dominicgs@gmail.com</a>
+
+<h2>Disclaimer</h2>
+<p>Neither this site, nor its author, are affiliated with the FCC in any way.</p>
+</body>
+</html>

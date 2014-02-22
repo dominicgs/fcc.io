@@ -1,0 +1,5 @@
+User-Agent: *
+Crawl-delay: 10
+Allow: /index.html
+Disallow: /
+Host: fcc.io

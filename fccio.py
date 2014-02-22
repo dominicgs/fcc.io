@@ -1,9 +1,19 @@
 # This must be added in order to do correct path lookups for the views
-from bottle import route, template, default_app
+from bottle import route, template, default_app, static_file
+import string
 
 @route('/')
+@route('/index.html')
 def index():
-	return template('index')
+	return static_file('index.html', root='/var/www/fccio/static')
+
+@route('/favicon.ico')
+def favicon():
+	return static_file('favicon.ico', root='/var/www/fccio/static')
+
+@route('/robots.txt')
+def favicon():
+	return static_file('robots.txt', root='/var/www/fccio/static')
 
 @route('/grantee/<name>')
 def search(name=None):
@@ -18,9 +28,17 @@ def search(appid=None, productid=None):
 		return index()
 	if productid is None:
 		productid = ''
-	if len(appid) > 5:
-		productid = appid[5:] + productid
-		appid = appid[:5]
+
+	if appid[0] in string.ascii_letters:
+		app_len = 3
+	elif appid[0] in string.digits:
+		app_len = 5
+	else:
+		return index()
+
+	if len(appid) > app_len:
+		productid = appid[app_len:] + productid
+		appid = appid[:app_len]
 	return template('search', appid=appid, productid=productid)
 
 application=default_app()
