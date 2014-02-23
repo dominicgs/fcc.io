@@ -13,7 +13,7 @@ enough to remember.
 How?
 ----
 The URL scheme is simple:
- - https://fcc.io/"applicant id"/"product id"
+ - /"applicant id"/"product id"
 
 Try these:
  - https://fcc.io/NPI
