@@ -56,7 +56,7 @@ def lookup_fccid(appid, productid):
 	}
 	print(s.cookies)
 	r = s.post(fcc_url + product_search_url, data=payload)
-	print(.cookies)
+	print(r.cookies)
 	print("FCC id lookup complete")
 	return r.text
 
@@ -113,7 +113,7 @@ def get_attachment_urls(detail_url):
 
 # Fetch files and pack in to archive
 def fetch_and_pack(urls, filename):
-	with open('output.pdf', 'wb') as handle:
+	with open(filename, 'wb') as handle:
 		print(s.cookies)
 		r = s.get(fcc_url + urls[0], cookies=s.cookies)
 		print(r.cookies)
@@ -129,4 +129,6 @@ if __name__ == '__main__':
 	detail_url = parse_search_results(html_doc)
 	attachment_urls = get_attachment_urls(detail_url)
 	filename = "%s_%s.tar.gz" % (appid, productid)
+	# testing
+	filename = "test.pdf"
 	fetch_and_pack(attachment_urls, filename)
