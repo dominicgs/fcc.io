@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import string
 import sys
+import os
 import re
 
 fcc_url = "https://apps.fcc.gov"
@@ -108,11 +109,15 @@ def get_attachment_urls(detail_url):
 	return links
 
 # Fetch files and pack in to archive
-def fetch_and_pack(attachments, filename, referer):
+def fetch_and_pack(attachments, dirname, referer):
+	os.mkdir(dirname)
 	for (name, url) in attachments:
 		print("Fetching %s" % name)
-		with open(name, 'wb') as handle:
-			r = s.get(fcc_url + url, headers=dict(Referer=referer))
+		r = s.get(fcc_url + url, headers=dict(Referer=referer))
+		extension = r.headers['content-type'].split('/')[-1]
+		filename = name + '.' + extension
+		print("Writing %s" % filename)
+		with open(dirname + '/' + filename, 'wb') as handle:
 			for chunk in r.iter_content():
 				handle.write(chunk)
 
@@ -120,9 +125,10 @@ if __name__ == '__main__':
 	if len(sys.argv) > 1:
 		(appid, productid) = parse_fccid(*sys.argv[1:])
 	else:
-		(appid, productid) = parse_fccid(appid='ZYXSMARTIP1')
+		print("Usage: archive.py <FCC id>")
+		sys.exit(1)
 	html_doc = lookup_fccid(appid, productid)
 	detail_url = parse_search_results(html_doc)
 	attachments = get_attachment_urls(detail_url)
-	filename = "%s_%s.tar.gz" % (appid, productid)
-	fetch_and_pack(attachments, filename, detail_url)
+	dirname = "%s_%s" % (appid, productid)
+	fetch_and_pack(attachments, dirname, detail_url)
