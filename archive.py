@@ -54,9 +54,7 @@ def lookup_fccid(appid, productid):
 		"grantee_code" : appid,
 		"product_code" : productid
 	}
-	print(s.cookies)
 	r = s.post(fcc_url + product_search_url, data=payload)
-	print(r.cookies)
 	print("FCC id lookup complete")
 	return r.text
 
@@ -96,29 +94,27 @@ def parse_search_results(html):
 
 # Request details page
 def get_attachment_urls(detail_url):
-	print(s.cookies)
 	r = s.get(fcc_url + detail_url)
-	print(r.cookies)
 	soup = BeautifulSoup(r.text)
 	
 	rs_tables = soup("table", id="rsTable")
 	if len(rs_tables) != 1:
 		raise Exception("Error, found %d results tables" % len(rs_tables))
 	
-	links = rs_tables[0].find_all("a", href=re.compile("/eas/GetApplicationAttachment.html"))
-	hrefs = [link['href'] for link in links]
+	a_tags = rs_tables[0].find_all("a", href=re.compile("/eas/GetApplicationAttachment.html"))
+	links = [(tag.string, tag['href']) for tag in a_tags]
 
 	print("Exhibit links found")
-	return hrefs
+	return links
 
 # Fetch files and pack in to archive
-def fetch_and_pack(urls, filename):
-	with open(filename, 'wb') as handle:
-		print(s.cookies)
-		r = s.get(fcc_url + urls[0], cookies=s.cookies)
-		print(r.cookies)
-		for chunk in r.iter_content():
-			handle.write(chunk)
+def fetch_and_pack(attachments, filename, referer):
+	for (name, url) in attachments:
+		print("Fetching %s" % name)
+		with open(name, 'wb') as handle:
+			r = s.get(fcc_url + url, headers=dict(Referer=referer))
+			for chunk in r.iter_content():
+				handle.write(chunk)
 
 if __name__ == '__main__':
 	if len(sys.argv) > 1:
@@ -127,8 +123,6 @@ if __name__ == '__main__':
 		(appid, productid) = parse_fccid(appid='ZYXSMARTIP1')
 	html_doc = lookup_fccid(appid, productid)
 	detail_url = parse_search_results(html_doc)
-	attachment_urls = get_attachment_urls(detail_url)
+	attachments = get_attachment_urls(detail_url)
 	filename = "%s_%s.tar.gz" % (appid, productid)
-	# testing
-	filename = "test.pdf"
-	fetch_and_pack(attachment_urls, filename)
+	fetch_and_pack(attachments, filename, detail_url)
