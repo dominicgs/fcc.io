@@ -122,7 +122,7 @@ def fetch_and_pack(attachments, dirname, referer):
 				handle.write(chunk)
 
 if __name__ == '__main__':
-	if len(sys.argv) > 1:
+	if len(sys.argv) in (2, 3):
 		(appid, productid) = parse_fccid(*sys.argv[1:])
 	else:
 		print("Usage: archive.py <FCC id>")
