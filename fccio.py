@@ -1,5 +1,5 @@
 # This must be added in order to do correct path lookups for the views
-from bottle import route, template, default_app, static_file
+from bottle import route, template, default_app, static_file, run
 import string
 
 @route('/')
@@ -42,3 +42,6 @@ def search(appid=None, productid=None):
 	return template('search', appid=appid, productid=productid)
 
 application=default_app()
+
+if __name__ == '__main__':
+	run(host='localhost', port=8080, debug=True)
