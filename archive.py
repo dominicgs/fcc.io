@@ -87,11 +87,12 @@ def parse_search_results(html):
 		raise Exception("Error, found %d results tables" % len(rs_tables))
 	
 	links = rs_tables[0].find_all("a", href=re.compile("/oetcf/eas/reports/ViewExhibitReport.cfm\?mode=Exhibits"))
-	if len(links) != 1:
-		raise Exception("Error, found %d results tables" % len(links))
+	print("Found %d results" % len(links))
+	# if len(links) != 1:
+		# raise Exception("Error, found %d results rows" % len(links))
 
 	print("Detail link found")
-	return links[0]['href']
+	return [link['href'] for link in links]
 
 # Request details page
 def get_attachment_urls(detail_url):
@@ -110,7 +111,7 @@ def get_attachment_urls(detail_url):
 
 # Fetch files and pack in to archive
 def fetch_and_pack(attachments, dirname, referer):
-	os.mkdir(dirname)
+	os.makedirs(dirname)
 	for (name, url) in attachments:
 		print("Fetching %s" % name)
 		r = s.get(fcc_url + url, headers=dict(Referer=referer))
@@ -122,13 +123,19 @@ def fetch_and_pack(attachments, dirname, referer):
 				handle.write(chunk)
 
 if __name__ == '__main__':
-	if len(sys.argv) in (2, 3):
-		(appid, productid) = parse_fccid(*sys.argv[1:])
-	else:
+	# if len(sys.argv) in (2, 3):
+	# 	(appid, productid) = parse_fccid(*sys.argv[1:])
+	if len(sys.argv) <2:
 		print("Usage: archive.py <FCC id>")
 		sys.exit(1)
-	html_doc = lookup_fccid(appid, productid)
-	detail_url = parse_search_results(html_doc)
-	attachments = get_attachment_urls(detail_url)
-	dirname = "%s_%s" % (appid, productid)
-	fetch_and_pack(attachments, dirname, detail_url)
+	for fccid in sys.argv[1:]:
+		print("Looking up FCC id: %s" % fccid)
+		appid, productid = parse_fccid(fccid)
+		html_doc = lookup_fccid(appid, productid)
+		detail_urls = parse_search_results(html_doc)
+		for x, detail_url in enumerate(detail_urls, 1):
+			print("Fetching result %d" % x)
+			attachments = get_attachment_urls(detail_url)
+			dirname = "%s_%s/%d" % (appid, productid, x)
+			fetch_and_pack(attachments, dirname, detail_url)
+			print()
