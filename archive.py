@@ -138,4 +138,4 @@ if __name__ == '__main__':
 			attachments = get_attachment_urls(detail_url)
 			dirname = "%s_%s/%d" % (appid, productid, x)
 			fetch_and_pack(attachments, dirname, detail_url)
-			print()
+			print
