@@ -52,6 +52,9 @@
 
     <script type="text/javascript">
       var pathArray = window.location.pathname.split( '/' );
+	  if (pathArray[0] == '') {
+		pathArray.splice(0, 1);
+	  }
 
 	  if (pathArray.length == 1) {
 		document.getElementById('testdiv').innerHTML = "Combined IDs currently unhandled";
