@@ -62,7 +62,7 @@
 		document.getElementById('product_code').value = pathArray[1];
 		document.getElementById('testdiv').innerHTML = "Click 'submit' to search for " + pathArray[0] + " : " + pathArray[1];
 	  } else {
-		document.getElementById('testdiv').innerHTML = "Cannot interpret FCC ID: " + window.location.pathname;
+		document.getElementById('testdiv').innerHTML = "Cannot interpret FCC ID(" + pathArray.length +"): " + window.location.pathname;
 	  }
       
       //document.getElementById('fcc_form').submit();
