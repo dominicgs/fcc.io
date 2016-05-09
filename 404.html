@@ -57,9 +57,11 @@
 
 	  if (pathArray.length == 1) {
 		// Check first char to determine how we split it
-		if(/^\d+$/.test(pathArray[0])) {
+		if(/^\d.*$/.test(pathArray[0])) {
+		  console.log("Numeric");
 		  app_len = 5;
-		} else if(/^[a-z]+$/i.test(pathArray[0])) {
+		} else if(/^[a-z].*$/i.test(pathArray[0])) {
+		  console.log("Alphabetical");
 		  app_len = 3;
 		} else {
 		  // Error handling
