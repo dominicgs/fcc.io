@@ -45,12 +45,26 @@
 	<input type="hidden" name="comments" value="">
 	<input type="hidden" name="show_records" value="25">
 
-	<input type="hidden" name="grantee_code" value="{{appid}}">
-	<input type="hidden" name="product_code" value="{{productid}}">
+	<input type="hidden" name="grantee_code" value="" id="grantee_code">
+	<input type="hidden" name="product_code" value="" id="product_code">
+	<input type="submit" value="Search">
     </form>
 
     <script type="text/javascript">
-      document.getElementById('testdiv').innerHTML = window.location.pathname;
+      var pathArray = window.location.pathname.split( '/' );
+
+	  if (pathArray.length == 1) {
+		document.getElementById('testdiv').innerHTML = "Combined IDs currently unhandled";
+	  } else if (pathArray.length == 2 && pathArray[0] == 'grantee') {
+		document.getElementById('testdiv').innerHTML = "Grantees currently unhandled";
+	  } else if (pathArray.length == 2) {
+		document.getElementById('grantee_code').value = pathArray[0];
+		document.getElementById('product_code').value = pathArray[1];
+		document.getElementById('testdiv').innerHTML = "Click 'submit' to search for " + pathArray[0] + " : " + pathArray[1];
+	  } else {
+		document.getElementById('testdiv').innerHTML = "Cannot interpret FCC ID: " + window.location.pathname;
+	  }
+      
       //document.getElementById('fcc_form').submit();
     </script>
 
