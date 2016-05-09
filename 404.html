@@ -63,9 +63,13 @@
 		  app_len = 3;
 		} else {
 		  // Error handling
+		  ;
 		}
+		console.log("app_len="+app_len);
 		document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
+		console.log("grantee_code="+pathArray[0].substring(0, app_len));
 		document.getElementById('product_code').value = pathArray[0].substring(app_len);
+		console.log("product_code="+pathArray[0].substring(app_len));
 		document.getElementById('fcc_form').submit();
 		
 	  } else if (pathArray.length == 2 && pathArray[0] == 'grantee') {
