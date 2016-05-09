@@ -47,7 +47,6 @@
 
 	<input type="hidden" name="grantee_code" value="" id="grantee_code">
 	<input type="hidden" name="product_code" value="" id="product_code">
-	<input type="submit" value="Search">
     </form>
 
     <script type="text/javascript">
@@ -57,18 +56,30 @@
 	  }
 
 	  if (pathArray.length == 1) {
-		document.getElementById('testdiv').innerHTML = "Combined IDs currently unhandled";
+		// Check first char to determine how we split it
+		if(/^\d+$/.test(pathArray[0])) {
+		  app_len = 5;
+		} else if(/^[a-z]+$/i.test(pathArray[0])) {
+		  app_len = 3;
+		} else {
+		  // Error handling
+		}
+		document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
+		document.getElementById('product_code').value = pathArray[0].substring(app_len);
+		document.getElementById('fcc_form').submit();
+		
 	  } else if (pathArray.length == 2 && pathArray[0] == 'grantee') {
 		document.getElementById('testdiv').innerHTML = "Grantees currently unhandled";
+		
 	  } else if (pathArray.length == 2) {
 		document.getElementById('grantee_code').value = pathArray[0];
 		document.getElementById('product_code').value = pathArray[1];
-		document.getElementById('testdiv').innerHTML = "Click 'submit' to search for " + pathArray[0] + " : " + pathArray[1];
+		document.getElementById('fcc_form').submit();
+		//document.getElementById('testdiv').innerHTML = "Click 'submit' to search for " + pathArray[0] + " : " + pathArray[1];
 	  } else {
 		document.getElementById('testdiv').innerHTML = "Cannot interpret FCC ID(" + pathArray.length +"): " + window.location.pathname;
 	  }
       
-      //document.getElementById('fcc_form').submit();
     </script>
 
   </body>
