@@ -85,6 +85,10 @@
 		pathArray.splice(0, 1);
 	  }
 
+	  if (pathArray[0] == 'fcc.io') {
+		pathArray.splice(0, 1);
+	  }
+
 	  if (pathArray.length == 1) {
 		// Check first char to determine how we split it
 		if(/^\d.*$/.test(pathArray[0])) {
