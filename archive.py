@@ -53,7 +53,7 @@ def lookup_fccid(appid, productid):
         "fetchfrom": "0",
         "calledFromFrame": "Y",
         "comments": "",
-        "show_records": "25",
+        "show_records": "100",
         "grantee_code": appid,
         "product_code": productid
     }
@@ -65,7 +65,7 @@ def lookup_fccid(appid, productid):
 # Try to format appid and productid correctly
 def parse_fccid(appid=None, productid=None):
     if appid is None:
-        return None
+        return None, None
     if productid is None:
         productid = ''
     if appid[0] in string.ascii_letters:
@@ -73,12 +73,12 @@ def parse_fccid(appid=None, productid=None):
     elif appid[0] in string.digits:
         app_len = 5
     else:
-        return None
+        return None, None
 
     if len(appid) > app_len:
         productid = appid[app_len:] + productid
         appid = appid[:app_len]
-    return (appid, productid)
+    return appid, productid
 
 
 # Parsesearch results page to find "Detail" link
@@ -107,8 +107,7 @@ def get_attachment_urls(detail_url):
     if len(rs_tables) != 1:
         raise Exception("Error, found %d results tables" % len(rs_tables))
 
-    a_tags = rs_tables[0].find_all("a",
-								   href=re.compile("/eas/GetApplicationAttachment.html"))
+    a_tags = rs_tables[0].find_all("a", href=re.compile("/eas/GetApplicationAttachment.html"))
     links = [(tag.string, tag['href']) for tag in a_tags]
 
     print("Exhibit links found")
@@ -142,6 +141,6 @@ if __name__ == '__main__':
         for x, detail_url in enumerate(detail_urls, 1):
             print("Fetching result %d" % x)
             attachments = get_attachment_urls(detail_url)
-            dirname = "%s_%s/%d" % (appid, productid, x)
+            dirname = "%s/%s/%d" % (appid, productid, x)
             fetch_and_pack(attachments, dirname, detail_url)
             print
