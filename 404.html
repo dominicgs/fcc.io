@@ -1,9 +1,15 @@
 <html>
   <head>
     <title>FCC ID Search and Redirection</title>
+		<!-- From https://codepen.io/DHawku/details/yXEZdq -->
+		<link href="/spinner.css" rel="stylesheet">
   </head>
   <body>
-    Don't worry about the 404, we're forwarding you to the FCC now.
+		<div class="loading-container">
+  <div class="spinner"></div>
+  <div class="spinner-center"></div>
+  <div class="loading-text">Forwarding query to the FCC...</div>
+</div>
     <div id="error"></div>
     <form action="https://apps.fcc.gov/oetcf/eas/reports/GenericSearchResult.cfm?RequestTimeout=500"
 		  method="post" id="fcc_form">
