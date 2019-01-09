@@ -102,7 +102,7 @@
 				// Check user settings for where to forward request
 				// if (localStorage.getItem("provider") === "fccid.io") {
 				if (localStorage.getItem("provider") === null) {
-					window.location.href = "http://fccid.io/${pathArray[0]}";
+					window.location.href = "http://fccid.io/" + pathArray[0];
 				} else {
 					document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
 					document.getElementById('product_code').value = pathArray[0].substring(app_len);
