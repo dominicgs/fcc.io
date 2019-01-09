@@ -7,114 +7,120 @@
     <div id="error"></div>
     <form action="https://apps.fcc.gov/oetcf/eas/reports/GenericSearchResult.cfm?RequestTimeout=500"
 		  method="post" id="fcc_form">
-	<input type="hidden" name="application_status" value="">  
-	<input type="hidden" name="applicant_name" value="">                
-	<input type="hidden" name="grant_date_from" value="">
-	<input type="hidden" name="grant_date_to" value="">
-	<input type="hidden" name="grant_comments_label" value="">
-	<input type="hidden" name="application_purpose" value="">
-	<input type="hidden" name="application_purpose_description" value="">              
-	<input type="hidden" name="grant_code_1" value="">
-	<input type="hidden" name="grant_code_2" value="">
-	<input type="hidden" name="grant_code_3" value="">
-	<input type="hidden" name="test_firm" value="">
-	<input type="hidden" name="equipment_class" value="">
-	<input type="hidden" name="equipment_class_description" value="">
-	<input type="hidden" name="lower_frequency" value="">
-	<input type="hidden" name="upper_frequency" value="">
-	<input type="hidden" name="freq_exact_match" value="checked">
-	<input type="hidden" name="bandwidth_from" value="">
-	<input type="hidden" name="emission_designator" value="">
-	<input type="hidden" name="tolerance_from" value="">
-	<input type="hidden" name="tolerance_to" value="">
-	<input type="hidden" name="tolerance_exact_match" value="checked">
-	<input type="hidden" name="power_output_from" value="">
-	<input type="hidden" name="power_output_to" value="">
-	<input type="hidden" name="power_exact_match" value="checked">
-	<input type="hidden" name="rule_part_1" value="">
-	<input type="hidden" name="rule_part_2" value="">
-	<input type="hidden" name="rule_part_3" value="">
-	<input type="hidden" name="rule_part_exact_match" value="checked">
-	<input type="hidden" name="product_description" value="">
-	<input type="hidden" name="tcb_code" value="">
-	<input type="hidden" name="tcb_code_description" value="">
-	<input type="hidden" name="tcb_scope" value="">
-	<input type="hidden" name="tcb_scope_description" value="">
-	<input type="hidden" name="fetchfrom" value="0" >
-	<input type="hidden" name="calledFromFrame" value="Y">
-	<input type="hidden" name="comments" value="">
-	<input type="hidden" name="show_records" value="25">
+			<input type="hidden" name="application_status" value="">  
+			<input type="hidden" name="applicant_name" value="">                
+			<input type="hidden" name="grant_date_from" value="">
+			<input type="hidden" name="grant_date_to" value="">
+			<input type="hidden" name="grant_comments_label" value="">
+			<input type="hidden" name="application_purpose" value="">
+			<input type="hidden" name="application_purpose_description" value="">              
+			<input type="hidden" name="grant_code_1" value="">
+			<input type="hidden" name="grant_code_2" value="">
+			<input type="hidden" name="grant_code_3" value="">
+			<input type="hidden" name="test_firm" value="">
+			<input type="hidden" name="equipment_class" value="">
+			<input type="hidden" name="equipment_class_description" value="">
+			<input type="hidden" name="lower_frequency" value="">
+			<input type="hidden" name="upper_frequency" value="">
+			<input type="hidden" name="freq_exact_match" value="checked">
+			<input type="hidden" name="bandwidth_from" value="">
+			<input type="hidden" name="emission_designator" value="">
+			<input type="hidden" name="tolerance_from" value="">
+			<input type="hidden" name="tolerance_to" value="">
+			<input type="hidden" name="tolerance_exact_match" value="checked">
+			<input type="hidden" name="power_output_from" value="">
+			<input type="hidden" name="power_output_to" value="">
+			<input type="hidden" name="power_exact_match" value="checked">
+			<input type="hidden" name="rule_part_1" value="">
+			<input type="hidden" name="rule_part_2" value="">
+			<input type="hidden" name="rule_part_3" value="">
+			<input type="hidden" name="rule_part_exact_match" value="checked">
+			<input type="hidden" name="product_description" value="">
+			<input type="hidden" name="tcb_code" value="">
+			<input type="hidden" name="tcb_code_description" value="">
+			<input type="hidden" name="tcb_scope" value="">
+			<input type="hidden" name="tcb_scope_description" value="">
+			<input type="hidden" name="fetchfrom" value="0" >
+			<input type="hidden" name="calledFromFrame" value="Y">
+			<input type="hidden" name="comments" value="">
+			<input type="hidden" name="show_records" value="25">
 
-	<input type="hidden" name="grantee_code" value="" id="grantee_code">
-	<input type="hidden" name="product_code" value="" id="product_code">
+			<input type="hidden" name="grantee_code" value="" id="grantee_code">
+			<input type="hidden" name="product_code" value="" id="product_code">
     </form>
 
-	<form method="POST" id="grantee_form"
-	  action="https://apps.fcc.gov/oetcf/eas/reports/GranteeSearchResult.cfm?tcb_code=">
-	  <input type="hidden" name="grantee_name" value="" id="grantee_name">
-	  
-	  <input type="hidden" name="grantee_code" value="">
-	  <input type="hidden" name="frn" value="">
-	  <input type="hidden" name="address" value="">
-	  <input type="hidden" name="po_box" value="">
-	  <input type="hidden" name="city" value="">
-	  <input type="hidden" name="state" value="">
-	  <input type="hidden" name="state_description" value=""> 
-	  <input type="hidden" name="zip_code" value="">
-	  <input type="hidden" name="country" value="">
-	  <input type="hidden" name="country_description" value=""> 
-	  <input type="hidden" name="first_name" value="">
-	  <input type="hidden" name="middle_name" value="">
-	  <input type="hidden" name="last_name" value="">
-	  <input type="hidden" name="title" value="">
-	  <input type="hidden" name="phone" value="">
-	  <input type="hidden" name="extension" value="">
-	  <input type="hidden" name="fax" value="">
-	  <input type="hidden" name="email" value="">
-	  <input type="hidden" name="mail_stop" value="">
-	  <input type="hidden" name="show_records" value="10">
-	  <input type="hidden" name="fetchfrom" value="0">
-	  <input type="hidden" name="form" value="Grantee_Search">
-	  <input type="hidden" name="mode" value="edit">
-	  <input type="hidden" name="calledFromFrame" value="N">
-	</form>
+		<form method="POST" id="grantee_form"
+			action="https://apps.fcc.gov/oetcf/eas/reports/GranteeSearchResult.cfm?tcb_code=">
+			<input type="hidden" name="grantee_name" value="" id="grantee_name">
+			
+			<input type="hidden" name="grantee_code" value="">
+			<input type="hidden" name="frn" value="">
+			<input type="hidden" name="address" value="">
+			<input type="hidden" name="po_box" value="">
+			<input type="hidden" name="city" value="">
+			<input type="hidden" name="state" value="">
+			<input type="hidden" name="state_description" value=""> 
+			<input type="hidden" name="zip_code" value="">
+			<input type="hidden" name="country" value="">
+			<input type="hidden" name="country_description" value=""> 
+			<input type="hidden" name="first_name" value="">
+			<input type="hidden" name="middle_name" value="">
+			<input type="hidden" name="last_name" value="">
+			<input type="hidden" name="title" value="">
+			<input type="hidden" name="phone" value="">
+			<input type="hidden" name="extension" value="">
+			<input type="hidden" name="fax" value="">
+			<input type="hidden" name="email" value="">
+			<input type="hidden" name="mail_stop" value="">
+			<input type="hidden" name="show_records" value="10">
+			<input type="hidden" name="fetchfrom" value="0">
+			<input type="hidden" name="form" value="Grantee_Search">
+			<input type="hidden" name="mode" value="edit">
+			<input type="hidden" name="calledFromFrame" value="N">
+		</form>
 
-    <script type="text/javascript">
-      var pathArray = window.location.pathname.split( '/' );
-	  if (pathArray[0] == '') {
-		pathArray.splice(0, 1);
-	  }
+		<div id="redirect"></div>
+		<script type="text/javascript">
+			var pathArray = window.location.pathname.split( '/' );
+			if (pathArray[0] == '') {
+				pathArray.splice(0, 1);
+			}
 
-	  if (pathArray[0] == 'fcc.io') {
-		pathArray.splice(0, 1);
-	  }
+			if (pathArray[0] == 'fcc.io') {
+				pathArray.splice(0, 1);
+			}
 
-	  if (pathArray.length == 1) {
-		// Check first char to determine how we split it
-		if(/^\d.*$/.test(pathArray[0])) {
-		  app_len = 5;
-		} else if(/^[a-z].*$/i.test(pathArray[0])) {
-		  app_len = 3;
-		} else {
-		  // Error handling
-		  ;
-		}
-		document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
-		document.getElementById('product_code').value = pathArray[0].substring(app_len);
-		document.getElementById('fcc_form').submit();
-		
-	  } else if (pathArray.length == 2 && pathArray[0] == 'grantee') {
-		document.getElementById('grantee_name').value = pathArray[1];
-		document.getElementById('grantee_form').submit();
+			if (pathArray.length == 1) {
+				// Check first char to determine how we split it
+				if(/^\d.*$/.test(pathArray[0])) {
+					app_len = 5;
+				} else if(/^[a-z].*$/i.test(pathArray[0])) {
+					app_len = 3;
+				} else {
+					// Error handling
+					;
+				}
+				// Check user settings for where to forward request
+				// if (localStorage.getItem("provider") === "fccid.io") {
+				if (localStorage.getItem("provider") === null) {
+					document.getElementById('redirect').innerHTML("<meta http-equiv=\"refresh\" content=\"0; url=http://fccid.io/${pathArray[0]}\" />");
+				} else {
+					document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
+					document.getElementById('product_code').value = pathArray[0].substring(app_len);
+					document.getElementById('fcc_form').submit();
+				}
+			} else if (pathArray.length == 2 && pathArray[0] == 'grantee') {
+				document.getElementById('grantee_name').value = pathArray[1];
+				document.getElementById('grantee_form').submit();
 
-	  } else if (pathArray.length == 2) {
-		document.getElementById('grantee_code').value = pathArray[0];
-		document.getElementById('product_code').value = pathArray[1];
-		document.getElementById('fcc_form').submit();
+			} else if (pathArray.length == 2) {
+				document.getElementById('grantee_code').value = pathArray[0];
+				document.getElementById('product_code').value = pathArray[1];
+				document.getElementById('fcc_form').submit();
 
-	  } else {
-		document.getElementById('error').innerHTML = "Cannot interpret FCC ID: " + window.location.pathname;
-	  }
+			} else {
+				document.getElementById('error').innerHTML = "Cannot interpret FCC ID: " + window.location.pathname;
+			}
       
     </script>
 
