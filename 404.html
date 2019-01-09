@@ -79,7 +79,6 @@
 			<input type="hidden" name="calledFromFrame" value="N">
 		</form>
 
-		<div id="redirect"></div>
 		<script type="text/javascript">
 			var pathArray = window.location.pathname.split( '/' );
 			if (pathArray[0] == '') {
@@ -103,7 +102,7 @@
 				// Check user settings for where to forward request
 				// if (localStorage.getItem("provider") === "fccid.io") {
 				if (localStorage.getItem("provider") === null) {
-					document.getElementById('redirect').innerHTML("<meta http-equiv=\"refresh\" content=\"0; url=http://fccid.io/${pathArray[0]}\" />");
+					window.location.href = "http://fccid.io/${pathArray[0]}";
 				} else {
 					document.getElementById('grantee_code').value = pathArray[0].substring(0, app_len);
 					document.getElementById('product_code').value = pathArray[0].substring(app_len);
